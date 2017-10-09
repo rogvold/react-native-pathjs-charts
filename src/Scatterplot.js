@@ -132,7 +132,7 @@ export default class Scatterplot extends Component {
 
     const points = _.map(chart.curves, function (c, i) {
       return _.map(c.line.path.points(),function(p,j) {
-        let col = colorData[i, j];
+        let col = colorData[i][j];
         if (col != undefined){
             colors = styleSvg({}, options, {fill: col, stroke: col});
         }
