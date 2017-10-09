@@ -116,7 +116,6 @@ export default class Scatterplot extends Component {
       data: this.props.data,
       xaccessor: accessor(this.props.xKey),
       yaccessor: accessor(this.props.yKey),
-      coloraccessor: accessor(this.props.colorKey),
       width: options.chartWidth,
       height: options.chartHeight,
       closed: false
