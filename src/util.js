@@ -122,6 +122,9 @@ export class Options {
     this.min = props.min || this.options.min
     this.max = props.max || this.options.max
   }
+
+
+
   get legendPosition(){ return this.props.legendPosition || (this.props.options && this.props.options.legendPosition) || 'topLeft'}
   get axisX() {return this.props.axisX || (this.props.options && this.props.options.axisX) || {}}
   get axisY() {return this.props.axisY || (this.props.options && this.props.options.axisY) || {}}

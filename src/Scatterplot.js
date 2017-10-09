@@ -116,6 +116,7 @@ export default class Scatterplot extends Component {
       data: this.props.data,
       xaccessor: accessor(this.props.xKey),
       yaccessor: accessor(this.props.yKey),
+      coloraccessor: accessor(this.props.colorKey),
       width: options.chartWidth,
       height: options.chartHeight,
       closed: false
@@ -127,12 +128,18 @@ export default class Scatterplot extends Component {
       margin:options.margin
     }
 
-    const colors = styleSvg({},options)
-    const points = _.map(chart.curves, function (c) {
+    let colors = styleSvg({}, options);
+    let colorData = (this.props.colorData == undefined) ? this.props.data : this.props.colorData;
+
+    const points = _.map(chart.curves, function (c, i) {
       return _.map(c.line.path.points(),function(p,j) {
+        let col = colorData[i, j];
+        if (col != undefined){
+            colors = styleSvg({}, options, {fill: col, stroke: col});
+        }
         let render = <G key={'k' + j} x={p[0]} y={p[1]}>
-                    <Circle {...colors} cx={0} cy={0} r={options.r || 5} fillOpacity={1} />
-                </G>
+                      <Circle {...colors} cx={0} cy={0} r={options.r || 5} fillOpacity={1} />
+                    </G>
 
         return render
       },this)
