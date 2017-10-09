@@ -134,7 +134,7 @@ export default class Scatterplot extends Component {
       return _.map(c.line.path.points(),function(p,j) {
         let col = colorData[i][j];
         if (col != undefined){
-            colors = styleSvg({}, options, {fill: col, stroke: col});
+            colors = styleSvg({}, {fill: col, stroke: col});
         }
         let render = <G key={'k' + j} x={p[0]} y={p[1]}>
                       <Circle {...colors} cx={0} cy={0} r={options.r || 5} fillOpacity={1} />
